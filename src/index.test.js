@@ -1,7 +1,9 @@
 const {
   assoc, map, identity, hashMap, vals, keys,
-  is_empty, not, add, reduce, apply, comp, inc
+  is_empty, not, add, reduce, apply, comp, inc, update
 } = require("./index.js")
+
+const trim = s => s.strim()
 
 test("assoc",
     () => {
@@ -21,5 +23,6 @@ test("assoc",
       expect(keys({a: 1, b: 2})).toEqual(["a", "b"])
       expect(apply(hashMap, ["a", "b"])).toEqual({a: "b"})
       expect(comp(inc, inc, inc)(0)).toEqual(3)
+      expect(map(user => update(user, "score", inc), [{name: "joe", score: 1}])).toEqual([{name: "joe", score: 2}])
     }
 )

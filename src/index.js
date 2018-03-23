@@ -56,7 +56,9 @@ const keys = coll => map(first, coll)
 
 const comp = (...fs) => (...args) => first(reduce((v, f) => [apply(f, v)], args, fs))
 
+const update = (m, k, f) => assoc(m, k, f(get(m, k)))
+
 module.exports = {
   assoc, map, keys, apply, reduce, vals, add, hashMap, inc, is_empty, identity, not,
-  comp
+  comp, update
 }
