@@ -18,7 +18,9 @@ const is_empty = coll => is_zero(count(coll))
 
 const identity = n => n
 
-const partition = (coll, n) => is_empty(coll) ? [] : concat([coll.splice(0, n)], partition(coll, n))
+const splice = (coll, start, deleteCount, ...items) => coll.splice(start, deleteCount, ...items)
+
+const partition = (coll, n) => is_empty(coll) ? [] : concat([splice(coll,0, n)], partition(coll, n))
 
 const contains = (m, k) => k in m
 
