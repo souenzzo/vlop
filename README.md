@@ -15,11 +15,11 @@ https://www.infoq.com/presentations/Value-Values
 Apply a function in a collection of values
 
 ```javascript
-const { update, map, inc } = require("./vlop/core") //in the future: import * from "./vlop/core"
+const { update, map, inc, fnil } = require("./vlop/core") //in the future: import * from "./vlop/core"
 
 
 const update_winners = (users) => (
-    map(user => update(user, "name", inc), users) 
-) 
+    map(user => update(user, "score", fnil(inc, 0)), users) 
+)
 
 ```

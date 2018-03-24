@@ -1,9 +1,7 @@
 const {
-  assoc, map, identity, hashMap, vals, keys,
+  assoc, map, identity, hashMap, vals, keys, fnil, dissoc,
   is_empty, not, add, reduce, apply, comp, inc, update
 } = require("./index.js")
-
-const trim = s => s.strim()
 
 test("assoc",
     () => {
@@ -15,6 +13,12 @@ test("assoc",
       expect(is_empty({})).toEqual(true)
       expect(is_empty({0: false})).toEqual(false)
       expect(map(identity, [1, 2, 3])).toEqual([1, 2, 3])
+      expect(add()).toEqual(0)
+      expect(add(1)).toEqual(1)
+      expect(add(1, 2)).toEqual(3)
+      expect(add(1, 2, 3)).toEqual(6)
+      expect(is_empty(null)).toEqual(true)
+      expect(is_empty(map(identity, null))).toEqual(true)
       expect(not([])).toEqual(false)
       expect(reduce(add, 0, [1, 2, 3]))
       expect(hashMap("a", "b", "c", "d")).toEqual({a: "b", c: "d"})
@@ -24,5 +28,7 @@ test("assoc",
       expect(apply(hashMap, ["a", "b"])).toEqual({a: "b"})
       expect(comp(inc, inc, inc)(0)).toEqual(3)
       expect(map(user => update(user, "score", inc), [{name: "joe", score: 1}])).toEqual([{name: "joe", score: 2}])
+      expect(map(fnil(inc, 9), [null, 1])).toEqual([10, 2])
+      expect(dissoc({a: 1, b: 2}, "a")).toEqual({b: 2})
     }
 )
