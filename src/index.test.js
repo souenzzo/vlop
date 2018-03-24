@@ -1,6 +1,6 @@
 const {
-  assoc, map, identity, hashMap, vals, keys, fnil, dissoc,
-  is_empty, not, add, reduce, apply, comp, inc, update
+  assoc, map, identity, hashMap, vals, keys, fnil, dissoc, is_coll,
+  is_empty, not, add, reduce, apply, comp, inc, update, is_map
 } = require("./index.js")
 
 test("assoc",
@@ -18,6 +18,8 @@ test("assoc",
       expect(add(1, 2)).toEqual(3)
       expect(add(1, 2, 3)).toEqual(6)
       expect(is_empty(null)).toEqual(true)
+      expect(is_coll(null)).toEqual(false)
+      expect(is_map(null)).toEqual(false)
       expect(is_empty(map(identity, null))).toEqual(true)
       expect(not([])).toEqual(false)
       expect(reduce(add, 0, [1, 2, 3]))

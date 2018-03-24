@@ -4,7 +4,7 @@ const range = n => [...Array(n).keys()]
 
 const is_array = x => Array.isArray(x)
 
-const is_coll = x => (typeof(x) === "object")
+const is_coll = x =>  (typeof(x) === "object") && x !== null
 
 const is_null = x => x === null
 
@@ -18,9 +18,9 @@ const is_empty = coll => is_zero(count(coll))
 
 const identity = n => n
 
-const splice = (coll, start, deleteCount, ...items) => coll.splice(start, deleteCount, ...items)
+const splice = (coll, start, deleteCount, ...items) => [...coll].splice(start, deleteCount, ...items)
 
-const partition = (coll, n) => is_empty(coll) ? [] : concat([splice(coll,0, n)], partition(coll, n))
+const partition = (coll, n) => is_empty(coll) ? [] : concat([splice(coll, 0, n)], partition(coll, n))
 
 const contains = (m, k) => k in m
 
@@ -46,11 +46,11 @@ const and = (...ns) => reduce((acc, n) => acc && n, true, ns)
 
 const or = (...ns) => reduce((acc, n) => acc || n, false, ns)
 
-const map = (f, coll) => (is_array(coll) ? coll : Object.entries(or(coll, {}))).map(f)
+const is_map = x => and(is_coll(x), not(is_array(x)))
+
+const map = (f, coll) => (is_map(coll) ? Object.entries(coll) : or(coll, [])).map(f)
 
 const not = a => !a
-
-const is_map = x => and(is_coll(x), not(is_array(x)))
 
 const inc = n => add(n, 1)
 
@@ -73,5 +73,5 @@ const dissoc = (m, ...ks) => reduce((acc, k) => {
 
 module.exports = {
   assoc, map, keys, apply, reduce, vals, add, hashMap, inc, is_empty, identity, not,
-  comp, update, fnil, dissoc
+  comp, update, fnil, dissoc, is_map, is_coll
 }
