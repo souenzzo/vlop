@@ -1,12 +1,20 @@
-const count = n => is_null(n) ? 0 : Object.entries(n).length
+const is = require("./is.js")
+
+const or = (...ns) => reduce((acc, n) => acc || n, false, ns)
+
+const and = (...ns) => reduce((acc, n) => acc && n, true, ns)
+
+const is_nil = x => or(is.Null(x), is.Undefined(x))
+
+const is_map = x => and(is_coll(x), not(is.Array(x)))
+
+const not = a => !a
+
+const count = n => is_nil(n) ? 0 : Object.entries(n).length
 
 const range = n => [...Array(n).keys()]
 
-const is_array = x => Array.isArray(x)
-
-const is_coll = x =>  (typeof(x) === "object") && x !== null
-
-const is_null = x => x === null
+const is_coll = x => and(is.Object(x), not(is_nil(x)))
 
 const first = ([x]) => x
 
@@ -24,9 +32,9 @@ const partition = (coll, n) => is_empty(coll) ? [] : concat([splice(coll, 0, n)]
 
 const contains = (m, k) => k in m
 
-const get = (m, k, d) => contains(m, k) ? m[k] : d
+const get = (m, k, d) => contains(m, k) ? m[k] : or(d, null)
 
-const assoc = (m, k, v, ...vs) => (is_empty(vs) ? k ? {...m, ...{[k]: v}} : {...m} : assoc({...m, ...{[k]: v}}, ...vs))
+const assoc = (m, k, v, ...vs) => (is_empty(vs) ? k ? { ...m, ...{ [k]: v } } : { ...m } : assoc({ ...m, ...{ [k]: v } }, ...vs))
 
 const apply = (f, args) => f.apply(null, args)
 
@@ -42,15 +50,7 @@ const add = (...ns) => reduce((acc, n) => acc + n, 0, ns)
 
 const mult = (...ns) => reduce((acc, n) => acc * n, 1, ns)
 
-const and = (...ns) => reduce((acc, n) => acc && n, true, ns)
-
-const or = (...ns) => reduce((acc, n) => acc || n, false, ns)
-
-const is_map = x => and(is_coll(x), not(is_array(x)))
-
 const map = (f, coll) => (is_map(coll) ? Object.entries(coll) : or(coll, [])).map(f)
-
-const not = a => !a
 
 const inc = n => add(n, 1)
 
@@ -64,14 +64,14 @@ const comp = (...fs) => (...args) => first(reduce((v, f) => [apply(f, v)], args,
 
 const update = (m, k, f) => assoc(m, k, f(get(m, k)))
 
-const fnil = (f, v) => x => f(is_null(x) ? v : x)
+const fnil = (f, v) => x => f(is_nil(x) ? v : x)
 
 const dissoc = (m, ...ks) => reduce((acc, k) => {
-  let {[k]: _, ...rest} = acc
+  let { [k]: _, ...rest } = acc
   return rest
 }, m, ks)
 
 module.exports = {
   assoc, map, keys, apply, reduce, vals, add, hashMap, inc, is_empty, identity, not,
-  comp, update, fnil, dissoc, is_map, is_coll
+  comp, update, fnil, dissoc, is_map, is_coll, is_nil
 }
