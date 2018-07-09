@@ -28,7 +28,9 @@ const identity = n => n
 
 const splice = (coll, start, deleteCount, ...items) => [...coll].splice(start, deleteCount, ...items)
 
-const partition = (coll, n) => is_empty(coll) ? [] : concat([splice(coll, 0, n)], partition(coll, n))
+const drop = (coll, n) => splice(coll, n, count(coll))
+
+const partition = (coll, n) => is_empty(coll) ? [] : concat([splice(coll, 0, n)], partition(drop(coll, n), n))
 
 const contains = (m, k) => k in m
 
@@ -73,5 +75,5 @@ const dissoc = (m, ...ks) => reduce((acc, k) => {
 
 module.exports = {
   assoc, map, keys, apply, reduce, vals, add, hashMap, inc, is_empty, identity, not,
-  comp, update, fnil, dissoc, is_map, is_coll, is_nil
+  comp, update, fnil, dissoc, is_map, is_coll, is_nil, partition, range
 }

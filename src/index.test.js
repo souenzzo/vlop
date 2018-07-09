@@ -1,11 +1,12 @@
 const {
-  assoc, map, identity, hashMap, vals, keys, fnil, dissoc, is_coll,
-  is_empty, not, add, reduce, apply, comp, inc, update, is_map, is_nil
+  assoc, map, identity, hashMap, vals, keys, fnil, dissoc, is_coll, partition,
+  is_empty, not, add, reduce, apply, comp, inc, update, is_map, is_nil, range
 } = require("./index.js")
 
 test("assoc",
     () => {
       expect(assoc({}, "foo", "bar")).toEqual({ foo: "bar" })
+      expect(partition(range(10), 3)).toEqual([[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]])
       expect(is_empty([])).toEqual(true)
       expect(is_nil([[]])).toEqual(false)
       expect(is_empty([[]])).toEqual(false)
