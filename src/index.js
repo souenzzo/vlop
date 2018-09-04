@@ -14,6 +14,12 @@ const count = n => is_nil(n) ? 0 : Object.entries(n).length
 
 const range = n => [...Array(n).keys()]
 
+const repeat = (n, x) => Array(n).fill(x)
+
+const conj = (coll, x) => [...coll, x]
+
+const juxt = (...fs) => x => reduce((acc, f) => conj(acc, f(x)), [], fs)
+
 const is_coll = x => and(is.Object(x), not(is_nil(x)))
 
 const first = ([x]) => x
@@ -36,13 +42,13 @@ const contains = (m, k) => k in m
 
 const get = (m, k, d) => contains(m, k) ? m[k] : or(d, null)
 
-const assoc = (m, k, v, ...vs) => (is_empty(vs) ? k ? { ...m, ...{ [k]: v } } : { ...m } : assoc({ ...m, ...{ [k]: v } }, ...vs))
+const assoc = (m, k, v, ...vs) => (is_empty(vs) ? k ? {...m, ...{[k]: v}} : {...m} : assoc({...m, ...{[k]: v}}, ...vs))
 
 const apply = (f, args) => f.apply(null, args)
 
 const hashMap = (...kvs) => apply(assoc, concat([{}], kvs))
 
-const reduce = (f, val, coll) => coll.reduce(f, val)
+const reduce = (f, val, coll) => or(coll, []).reduce(f, val)
 
 const mod = (a, b) => a % b
 
@@ -69,7 +75,7 @@ const update = (m, k, f) => assoc(m, k, f(get(m, k)))
 const fnil = (f, v) => x => f(is_nil(x) ? v : x)
 
 const dissoc = (m, ...ks) => reduce((acc, k) => {
-  let { [k]: _, ...rest } = acc
+  let {[k]: _, ...rest} = acc
   return rest
 }, m, ks)
 
