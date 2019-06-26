@@ -1,0 +1,8 @@
+{:deps         true
+ :builds       {:cards {:target     nubank.workspaces.shadow-cljs.target
+                        :ns-regexp  "-(test|cards)$"
+                        :output-dir "resources/public/js/workspaces"
+                        :asset-path "/js/workspaces"
+                        :devtools   {:http-port 8080
+                                     :http-root "resources/public"}
+                        :preloads   []}}}

@@ -3,3 +3,8 @@ yarn-error.log
 .idea/
 *.jar
 out.js
+*.iml
+.shadow-cljs
+.nrepl-port
+resources/public/js
+.cpcache

@@ -4,11 +4,17 @@
   "description": "Value Oriented Programming",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "cards": "shadow-cljs watch cards"
   },
   "author": "Enzzo Cavallo",
   "license": "GPLv3",
   "devDependencies": {
-    "jest": "24.8.0"
+    "highlight.js": "9.15.8",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-grid-layout": "0.16.6",
+    "react-icons": "3.7.0",
+    "reakit": "0.16.0",
+    "shadow-cljs": "2.8.39"
   }
 }
