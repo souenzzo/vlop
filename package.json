@@ -4,7 +4,8 @@
   "description": "Value Oriented Programming",
   "main": "index.js",
   "scripts": {
-    "cards": "shadow-cljs watch cards"
+    "cards": "shadow-cljs watch cards",
+    "build": "shadow-cljs release cards"
   },
   "author": "Enzzo Cavallo",
   "license": "GPLv3",

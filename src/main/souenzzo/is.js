@@ -6,5 +6,5 @@ export const Object = sameType({})
 export const Number = sameType(0)
 export const Null = x => x === null
 export const Undefined = sameType(undefined)
-export const Array = global.Array.isArray
+export const Array = window.Array.isArray
 
