@@ -48,7 +48,7 @@ export const apply = (f, args) => f.apply(null, args)
 
 export const hashMap = (...kvs) => apply(assoc, concat([{}], kvs))
 
-export const reduce = (f, val, coll) => or(coll, []).reduce(f, val)
+export const reduce = (f, val, coll) => (coll || []).reduce(f, val)
 
 export const mod = (a, b) => a % b
 
