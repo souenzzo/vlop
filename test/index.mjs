@@ -1,10 +1,41 @@
-import * as vlop from "@vlop/index";
-import * as assert from "node:assert";
-import test from "node:test";
+import {assoc, range, partition, is_empty} from "@vlop/index";
+import {deepEqual} from "node:assert";
+import {test} from "node:test";
 
 test("assoc", () => {
-    assert.deepEqual(vlop.assoc({}, "foo", "bar"), {foo: "bar"});
+    deepEqual(
+        assoc({}, "foo", "bar"),
+        {foo: "bar"}
+    );
 })
+test("range", () => {
+    deepEqual(
+        range(10),
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    );
+})
+test("partition", () => {
+    deepEqual(
+        partition(range(10), 3),
+        [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]
+    );
+})
+
+test("is_empty", async (t) => {
+    await t.test("with an empty array", () => {
+        deepEqual(
+            is_empty([]),
+            true
+        );
+    });
+    await t.test("with an array with the value zero", () => {
+        deepEqual(
+            is_empty([0]),
+            false
+        );
+    });
+})
+
 /*
 let x = () => {
     expect(assoc({}, "foo", "bar")).toEqual({foo: "bar"})

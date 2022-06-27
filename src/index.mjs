@@ -6,20 +6,20 @@ export let Function = sameType(sameType);
 export let Number = sameType(0);
 export let Null = x => x === null;
 export let Undefined = sameType(undefined);
-export let Array = x => this.Array.isArray(x)
+// export let Array = x => this.Array.isArray(x)
 
 
 // export let or = (...ns) => reduce((acc, n) => acc || n, false, ns)
 
 export let and = (...ns) => reduce((acc, n) => acc && n, true, ns)
 
-// export let is_nil = x => or(Null(x), Undefined(x))
+export let is_nil = x => Null(x) || Undefined(x)
 
 export let is_map = x => and(is_coll(x), not(Array(x)))
 
 export let not = a => !a
 
-// export let count = n => is_nil(n) ? 0 : Object.entries(n).length
+export let count = n => is_nil(n) ? 0 : Object.entries(n).length
 
 export let range = n => [...Array(n).keys()]
 
@@ -44,7 +44,7 @@ export let identity = n => n
 
 export let splice = (coll, start, deleteCount, ...items) => [...coll].splice(start, deleteCount, ...items)
 
-// export let drop = (coll, n) => splice(coll, n, count(coll))
+export let drop = (coll, n) => splice(coll, n, count(coll))
 
 export let partition = (coll, n) => is_empty(coll) ? [] : concat([splice(coll, 0, n)], partition(drop(coll, n), n))
 
@@ -58,7 +58,7 @@ export let apply = (f, args) => f.apply(null, args)
 
 export let hashMap = (...kvs) => apply(assoc, concat([{}], kvs))
 
-// export let reduce = (f, val, coll) => or(coll, []).reduce(f, val)
+export let reduce = (f, val, [... coll]) => coll.reduce(f, val)
 
 export let mod = (a, b) => a % b
 
