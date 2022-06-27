@@ -1,4 +1,4 @@
-on: "workflow_dispatch"
+on: ["push", "pull_request"]
 jobs:
   test:
     runs-on: "ubuntu-latest"
@@ -8,5 +8,5 @@ jobs:
       with:
         node-version: "18"
         cache: "npm"
-    - run: npm --audit=false --ignore-scripts=true --update-notifier=false --fund=false ci
-    - run: node --test
+    - run: "npm --audit=false --ignore-scripts=true --update-notifier=false --fund=false ci"
+    - run: "node --test"
