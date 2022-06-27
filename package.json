@@ -1,15 +1,8 @@
 {
-  "name": "vlop",
-  "version": "0.1.0",
-  "description": "Value Oriented Programming",
-  "main": "index.js",
+  "name": "@vlop/index",
+  "main": "src/index.mjs",
   "scripts": {
-    "test": "jest"
+    "test": "node --test"
   },
-  "author": "Enzzo Cavallo",
-  "license": "GPLv3",
-  "devDependencies": {
-    "jest": "24.8.0"
-  }
+  "workspaces": ["."]
 }
-
