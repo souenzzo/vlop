@@ -1,4 +1,5 @@
 # vlop
+
 > Value-Oriented programming utilities for javascript.
 
 ## what?
@@ -18,6 +19,11 @@ import * as vlop from "@vlop/core"
 const update_winners = (users) => (
     vlop.map(user => vlop.update(user, "score", vlop.fnil(inc, 0)), users) 
 )
+```
+
+```javascript
+> update_winners([{name: "Alice", score: 42}, {name: "Bob"}])
+[ { name: 'Alice', score: 42 }, { name: 'Bob', score: 1 } ]
 ```
 
 ## developing

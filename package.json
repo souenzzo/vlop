@@ -2,7 +2,13 @@
   "name": "@vlop/index",
   "main": "src/index.mjs",
   "scripts": {
+    "standard": "standard",
     "test": "node --test"
   },
-  "workspaces": ["."]
+  "workspaces": [
+    "."
+  ],
+  "devDependencies": {
+    "standard": "17.1.2"
+  }
 }

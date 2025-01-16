@@ -1,61 +1,61 @@
-import {assoc, range, partition, is_empty} from "@vlop/index";
-import {deepEqual} from "node:assert";
-import {test} from "node:test";
+import {assoc, range, partition, isEmpty} from '@vlop/index'
+import {deepEqual} from 'node:assert'
+import {test, suite} from 'node:test'
 
-test("assoc", () => {
+test('assoc', () => {
     deepEqual(
-        assoc({}, "foo", "bar"),
-        {foo: "bar"}
-    );
+        assoc({}, 'foo', 'bar'),
+        {foo: 'bar'}
+    )
 })
-test("range", () => {
+test('range', () => {
     deepEqual(
         range(10),
         [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    );
+    )
 })
-test("partition", () => {
+test('partition', () => {
     deepEqual(
         partition(range(10), 3),
         [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]
-    );
+    )
 })
 
-test("is_empty", async (t) => {
-    await t.test("with an empty array", () => {
+suite('isEmpty', () => {
+    test('with an empty array')
+    deepEqual(
+        isEmpty([]),
+        true
+    )
+
+    test('with an array with the value zero', () => {
         deepEqual(
-            is_empty([]),
-            true
-        );
-    });
-    await t.test("with an array with the value zero", () => {
-        deepEqual(
-            is_empty([0]),
+            isEmpty([0]),
             false
-        );
-    });
+        )
+    })
 })
 
 /*
 let x = () => {
     expect(assoc({}, "foo", "bar")).toEqual({foo: "bar"})
     expect(partition(range(10), 3)).toEqual([[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]])
-    expect(is_empty([])).toEqual(true)
-    expect(is_nil([[]])).toEqual(false)
-    expect(is_empty([[]])).toEqual(false)
-    expect(is_empty([0])).toEqual(false)
-    expect(is_empty([false])).toEqual(false)
-    expect(is_empty({})).toEqual(true)
-    expect(is_empty({0: false})).toEqual(false)
+    expect(isEmpty([])).toEqual(true)
+    expect(isNil([[]])).toEqual(false)
+    expect(isEmpty([[]])).toEqual(false)
+    expect(isEmpty([0])).toEqual(false)
+    expect(isEmpty([false])).toEqual(false)
+    expect(isEmpty({})).toEqual(true)
+    expect(isEmpty({0: false})).toEqual(false)
     expect(map(identity, [1, 2, 3])).toEqual([1, 2, 3])
     expect(add()).toEqual(0)
     expect(add(1)).toEqual(1)
     expect(add(1, 2)).toEqual(3)
     expect(add(1, 2, 3)).toEqual(6)
-    expect(is_empty(null)).toEqual(true)
-    expect(is_coll(null)).toEqual(false)
-    expect(is_map(null)).toEqual(false)
-    expect(is_empty(map(identity, null))).toEqual(true)
+    expect(isEmpty(null)).toEqual(true)
+    expect(isColl(null)).toEqual(false)
+    expect(isMap(null)).toEqual(false)
+    expect(isEmpty(map(identity, null))).toEqual(true)
     expect(not([])).toEqual(false)
     expect(reduce(add, 0, [1, 2, 3]))
     expect(hashMap("a", "b", "c", "d")).toEqual({a: "b", c: "d"})
@@ -69,4 +69,3 @@ let x = () => {
     expect(dissoc({a: 1, b: 2}, "a")).toEqual({b: 2})
 }
  */
-
