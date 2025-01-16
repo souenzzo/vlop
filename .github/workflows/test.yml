@@ -4,9 +4,5 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
     - uses: "actions/checkout@v3"
-    - uses: "actions/setup-node@v3"
-      with:
-        node-version: "18"
-        cache: "npm"
-    - run: "npm --audit=false --ignore-scripts=true --update-notifier=false --fund=false ci"
-    - run: "node --test"
+    - run: "npm run ci"
+    - run: "npm test"

@@ -2,6 +2,7 @@
   "name": "@vlop/index",
   "main": "src/index.mjs",
   "scripts": {
+    "ci": "npm --audit=false --ignore-scripts=true --update-notifier=false --fund=false ci",
     "standard": "standard",
     "test": "node --test"
   },
