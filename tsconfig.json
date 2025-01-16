@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "downlevelIteration": true,
+    "target": "ES2023",
+    "lib": [
+      "ES2023"
+    ]
+  }
+}

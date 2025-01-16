@@ -1,27 +1,43 @@
+// @ts-check
+
+/** @type {function(any): function(any): boolean}  */
 export const sameType = x => y => typeof (x) === typeof (y)
 
 export const String = sameType('')
 export const Function = sameType(sameType)
 // export let Object = sameType({});
 export const Number = sameType(0)
+
+/**
+ * @returns boolean
+ * @param x
+ */
 export const Null = x => x === null
 export const Undefined = sameType(undefined)
 // export let Array = x => this.Array.isArray(x)
 
+/** @type {function(...any): any}  */
 export const or = (...ns) => reduce((acc, n) => acc || n, false, ns)
 
+/** @type {function(...any): any}  */
 export const and = (...ns) => reduce((acc, n) => acc && n, true, ns)
 
+/** @type {function(any): boolean}  */
 export const isNil = x => Null(x) || Undefined(x)
 
+/** @type {function(any): boolean}  */
 export const isColl = x => and(Object(x), not(isNil(x)))
 
+/** @type {function(any): boolean}  */
 export const isMap = x => and(isColl(x), not(Array(x)))
 
+/** @type {function(any): boolean}  */
 export const not = a => !a
 
+/** @type {function(any): number}  */
 export const count = n => isNil(n) ? 0 : Object.entries(n).length
 
+/** @type {function(number): Array.<number>}  */
 export const range = n => [...Array(n).keys()]
 
 export const repeat = (n, x) => Array(n).fill(x)

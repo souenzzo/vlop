@@ -1,39 +1,39 @@
-import {assoc, range, partition, isEmpty} from '@vlop/index'
-import {deepEqual} from 'node:assert'
-import {test, suite} from 'node:test'
+import { assoc, range, partition, isEmpty } from '@vlop/index'
+import { deepEqual } from 'node:assert'
+import { test, suite } from 'node:test'
 
 test('assoc', () => {
-    deepEqual(
-        assoc({}, 'foo', 'bar'),
-        {foo: 'bar'}
-    )
+  deepEqual(
+    assoc({}, 'foo', 'bar'),
+    { foo: 'bar' }
+  )
 })
 test('range', () => {
-    deepEqual(
-        range(10),
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    )
+  deepEqual(
+    range(10),
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  )
 })
 test('partition', () => {
-    deepEqual(
-        partition(range(10), 3),
-        [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]
-    )
+  deepEqual(
+    partition(range(10), 3),
+    [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]
+  )
 })
 
 suite('isEmpty', () => {
-    test('with an empty array')
-    deepEqual(
-        isEmpty([]),
-        true
-    )
+  test('with an empty array')
+  deepEqual(
+    isEmpty([]),
+    true
+  )
 
-    test('with an array with the value zero', () => {
-        deepEqual(
-            isEmpty([0]),
-            false
-        )
-    })
+  test('with an array with the value zero', () => {
+    deepEqual(
+      isEmpty([0]),
+      false
+    )
+  })
 })
 
 /*

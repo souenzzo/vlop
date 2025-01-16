@@ -4,12 +4,14 @@
   "scripts": {
     "ci": "npm --audit=false --ignore-scripts=true --update-notifier=false --fund=false ci",
     "standard": "standard",
+    "tsc": "tsc",
     "test": "node --test"
   },
   "workspaces": [
     "."
   ],
   "devDependencies": {
-    "standard": "17.1.2"
+    "standard": "17.1.2",
+    "typescript": "5.7.3"
   }
 }
