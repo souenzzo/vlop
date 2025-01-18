@@ -13,7 +13,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: "npm run ci"
-      - run: "npm tsc"
+      - run: "npm run tsc"
   standard:
     runs-on: "ubuntu-latest"
     steps:
@@ -27,7 +27,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: "npm run ci"
-      - run: "npm standard"
+      - run: "npm run standard"
   test:
     runs-on: "ubuntu-latest"
     steps:
