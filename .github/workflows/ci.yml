@@ -1,6 +1,6 @@
 on: ["push", "pull_request"]
 jobs:
-  tsc2:
+  tsc:
     uses: ./.github/workflows/npm-run-script.yml
     with:
       command: "tsc"

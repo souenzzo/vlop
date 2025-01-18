@@ -18,4 +18,4 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: "npm run ci"
-      - run: [ "npm", "run", "${{  inputs.command }}" ]
+      - run: "npm run ${{ inputs.command }}"
