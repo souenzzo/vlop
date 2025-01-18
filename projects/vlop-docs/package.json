@@ -1,17 +1,13 @@
 {
-  "name": "@vlop/core",
-  "main": "src/index.mjs",
+  "name": "@vlop/docs",
   "scripts": {
     "ci": "npm --audit=false --ignore-scripts=true --update-notifier=false --fund=false --loglevel=error ci",
-    "standard": "standard",
-    "tsc": "tsc",
-    "test": "node --test"
+    "start": "jsdoc -c jsdoc.json node_modules/@vlop/core/src/index.mjs"
   },
   "workspaces": [
-    "."
+    "../.."
   ],
   "devDependencies": {
-    "standard": "17.1.2",
-    "typescript": "5.7.3"
+    "jsdoc": "4.0.4"
   }
 }

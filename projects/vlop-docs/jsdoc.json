@@ -1,0 +1,5 @@
+{
+  "source": {
+    "includePattern": "node_modules/@vlop/core/src/index.mjs"
+  }
+}
