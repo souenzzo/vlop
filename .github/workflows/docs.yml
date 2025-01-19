@@ -1,0 +1,22 @@
+on: [ "workflow_dispatch" ]
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - id: npm-config
+        run: "echo \"cache=$(npm config get cache)\" >> ${GITHUB_OUTPUT}"
+      - uses: "actions/checkout@v4.2.2"
+      - uses: "actions/cache@v4.2.0"
+        with:
+          path: ${{ steps.npm-config.outputs.cache }}
+          key: ${{ runner.os }}-docs-${{ hashFiles('projects/vlop-docs/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-docs-
+      - run: "npm run ci"
+        working-directory: projects/vlop-docs
+      - run: "npm run docs"
+        working-directory: projects/vlop-docs
+      - uses: actions/upload-artifact@v4.6.0
+        with:
+          name: docs
+          path: projects/vlop-docs/out
