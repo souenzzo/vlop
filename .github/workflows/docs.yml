@@ -26,5 +26,7 @@ jobs:
       pages: write
       id-token: write
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     steps:
       - uses: actions/deploy-pages@v4.0.5
