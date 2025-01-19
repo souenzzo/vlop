@@ -6,6 +6,7 @@
     "ci": "npm --audit=false --ignore-scripts=true --update-notifier=false --fund=false --loglevel=error ci",
     "standard": "standard",
     "tsc": "tsc",
+    "publish": "npm publish --provenance --access public",
     "test": "node --test"
   },
   "workspaces": [
