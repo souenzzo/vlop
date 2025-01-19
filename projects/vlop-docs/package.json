@@ -2,7 +2,8 @@
   "name": "@souenzzo/vlop-docs",
   "scripts": {
     "ci": "npm --audit=false --ignore-scripts=true --update-notifier=false --fund=false --loglevel=error ci",
-    "start": "jsdoc -c jsdoc.json node_modules/@souenzzo/vlop/src/index.mjs"
+    "start": "jsdoc -c jsdoc.json node_modules/@souenzzo/vlop/src/index.mjs",
+    "docs": "jsdoc -c jsdoc.json node_modules/@souenzzo/vlop/src/index.mjs"
   },
   "workspaces": [
     "../.."
