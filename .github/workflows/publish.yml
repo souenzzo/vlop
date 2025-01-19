@@ -2,12 +2,10 @@ on:
   release:
     types: [ published ]
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  publish:
     permissions:
       contents: read
       id-token: write
-    steps:
-      - uses: ./.github/workflows/npm-run-script.yml
-        with:
-          command: "publish"
+    uses: ./.github/workflows/npm-run-script.yml
+    with:
+      command: "publish"
