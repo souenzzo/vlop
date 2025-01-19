@@ -1,5 +1,5 @@
 {
   "source": {
-    "includePattern": "node_modules/@vlop/core/src/index.mjs"
+    "includePattern": "node_modules/@souenzzo/vlop/src/index.mjs"
   }
 }

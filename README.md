@@ -14,7 +14,7 @@ checkout this presentation: [Value-Values](https://www.infoq.com/presentations/V
 Apply a function in a collection of values
 
 ```javascript
-import * as vlop from "@vlop/core"
+import * as vlop from "@souenzzo/vlop"
 
 const update_winners = (users) => (
     vlop.map(user => vlop.update(user, "score", vlop.fnil(inc, 0)), users) 
@@ -31,6 +31,8 @@ const update_winners = (users) => (
 ### Testing 
 
 ```shell
-npm install 
-node --test
+## Install deps
+npm ci
+## Run tests
+npm test
 ```

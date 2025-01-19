@@ -1,4 +1,4 @@
-import { assoc, range, partition, isEmpty } from '@vlop/core'
+import { assoc, range, partition, isEmpty } from '@souenzzo/vlop'
 import { deepEqual } from 'node:assert'
 import { test, suite } from 'node:test'
 
