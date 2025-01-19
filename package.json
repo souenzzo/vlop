@@ -1,6 +1,5 @@
 {
   "name": "@souenzzo/vlop",
-  "version": "0.0.1",
   "main": "src/index.mjs",
   "scripts": {
     "ci": "npm --audit=false --ignore-scripts=true --update-notifier=false --fund=false --loglevel=error ci",
